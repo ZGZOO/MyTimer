@@ -9,35 +9,38 @@
 import UIKit
 
 class EventsViewController: UIViewController {
-    var eventTextField: UITextField?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
     }
 
-    @IBAction func addEventTapped(_ sender: Any) {
-        let alertController = UIAlertController(title: "Enter your event", message: nil, preferredStyle: .alert)
-        alertController.addTextField(configurationHandler: eventTextFieldFunc)
+    @IBAction func addEventAction(_ sender: Any) {
+        print("hello!!")
         
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: self.okHandlerFunc)
+        let alertController = UIAlertController(title: "Enter your event:", message: nil, preferredStyle: .alert)
+        
+        //Textfield to enter!! This part I need to study
+        alertController.addTextField(configurationHandler: { (_ textField: UITextField) -> Void in textField.placeholder = "Writing codes/Make dinner/Do chor...   "
+            textField.textAlignment = .center
+            textField.textColor = UIColor.black
+        })
+        
+        //Create action to the Textfield. cancelAction is understandable
+        //okAction I need to study!
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: {_ -> Void in
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let timerVC = storyBoard.instantiateViewController(withIdentifier: "Timer")
+            self.present(timerVC, animated: true, completion: nil)
+        })
         
+        //Add action to alertController. Yes
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        
+        //present! Yes
         self.present(alertController, animated: true, completion: nil)
-    }
-    
-    func eventTextFieldFunc(textField: UITextField){
-        eventTextField = textField
-        eventTextField?.placeholder = "Writing codes/Make dinner/Do chor..."
-    }
-    
-    func okHandlerFunc(alert: UIAlertAction){
-        let addEventsVC = AddEvents()
-        addEventsVC.customInit(eventStr: (eventTextField?.text)!)
-        self.navigationController?.pushViewController(addEventsVC, animated: true)
     }
 }
 

@@ -1,33 +1,21 @@
 //
-//  AddEvents.swift
+//  TimerSceneViewController.swift
 //  MyTimer
 //
-//  Created by Zhijie (Jenny) Xu on 1/28/19.
+//  Created by Zhijie (Jenny) Xu on 1/29/19.
 //  Copyright © 2019 Zhijie (Jenny) Xu. All rights reserved.
 //
 
 import UIKit
 
-class AddEvents: UIViewController {
+class TimerSceneViewController: UIViewController {
 
-    @IBOutlet weak var enterEventLabel: UILabel!
-    
-    var eventStr: String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        enterEventLabel.text = eventStr
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    func customInit(eventStr: String){
-        self.eventStr = eventStr
-    }
 
+        // Do any additional setup after loading the view.
+    }
+    
 
     /*
     // MARK: - Navigation
