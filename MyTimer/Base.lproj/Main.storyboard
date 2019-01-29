@@ -61,13 +61,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZb-20-xnU">
-                                <rect key="frame" x="54" y="166" width="34.5" height="30"/>
+                                <rect key="frame" x="55" y="181" width="36" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="n1T-Cb-rJP"/>
+                                </constraints>
                                 <state key="normal" title="Start">
                                     <color key="titleColor" red="0.9103967547416687" green="0.3195361662747806" blue="0.35785335639873339" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWx-Ix-h98">
+                                <rect key="frame" x="287" y="181" width="34" height="30"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" red="0.9103967547416687" green="0.3195361662747806" blue="0.35785335639873339" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKz-TQ-xer">
+                                <rect key="frame" x="55" y="127" width="265" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial blank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnd-up-uV8">
+                                <rect key="frame" x="144" y="83" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbV-pp-SWj">
-                                <rect key="frame" x="159" y="166" width="56" height="30"/>
+                                <rect key="frame" x="159.5" y="181" width="56" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="yg4-fu-9VR"/>
                                 </constraints>
@@ -75,38 +96,27 @@
                                     <color key="titleColor" red="0.19062146230820509" green="0.52402744482171948" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKz-TQ-xer">
-                                <rect key="frame" x="54" y="100" width="266" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWx-Ix-h98">
-                                <rect key="frame" x="288" y="166" width="32" height="30"/>
-                                <state key="normal" title="Stop">
-                                    <color key="titleColor" red="0.9103967547416687" green="0.3195361662747806" blue="0.35785335639873339" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="eKz-TQ-xer" firstAttribute="leading" secondItem="25B-BO-WEN" secondAttribute="leading" constant="54" id="3GX-zR-17r"/>
-                            <constraint firstItem="IbV-pp-SWj" firstAttribute="baseline" secondItem="ZWx-Ix-h98" secondAttribute="baseline" id="3hd-ut-4zd"/>
-                            <constraint firstItem="WZb-20-xnU" firstAttribute="top" secondItem="eKz-TQ-xer" secondAttribute="bottom" constant="36" id="86s-Dn-Kzy"/>
-                            <constraint firstItem="eKz-TQ-xer" firstAttribute="top" secondItem="25B-BO-WEN" secondAttribute="top" constant="36" id="99Q-zQ-0Dx"/>
-                            <constraint firstItem="IbV-pp-SWj" firstAttribute="leading" secondItem="WZb-20-xnU" secondAttribute="trailing" constant="71" id="LfH-dG-7yJ"/>
-                            <constraint firstItem="eKz-TQ-xer" firstAttribute="centerX" secondItem="IbV-pp-SWj" secondAttribute="centerX" id="UIA-sf-eKD"/>
-                            <constraint firstItem="eKz-TQ-xer" firstAttribute="trailing" secondItem="ZWx-Ix-h98" secondAttribute="trailing" id="hGa-C7-LcW"/>
-                            <constraint firstItem="eKz-TQ-xer" firstAttribute="leading" secondItem="WZb-20-xnU" secondAttribute="leading" id="kK0-pF-Fh8"/>
-                            <constraint firstItem="IbV-pp-SWj" firstAttribute="baseline" secondItem="WZb-20-xnU" secondAttribute="baseline" id="sOo-S4-5m1"/>
-                            <constraint firstItem="ZWx-Ix-h98" firstAttribute="leading" secondItem="IbV-pp-SWj" secondAttribute="trailing" constant="73" id="yOX-Ss-SdF"/>
-                            <constraint firstItem="eKz-TQ-xer" firstAttribute="centerX" secondItem="XSU-lH-woV" secondAttribute="centerX" id="zmf-PA-03s"/>
+                            <constraint firstItem="eKz-TQ-xer" firstAttribute="leading" secondItem="WZb-20-xnU" secondAttribute="leading" id="0vh-7T-hKm"/>
+                            <constraint firstItem="WZb-20-xnU" firstAttribute="baseline" secondItem="IbV-pp-SWj" secondAttribute="baseline" id="4xz-Ag-I8B"/>
+                            <constraint firstItem="IbV-pp-SWj" firstAttribute="baseline" secondItem="ZWx-Ix-h98" secondAttribute="baseline" id="8rT-pn-imA"/>
+                            <constraint firstItem="WZb-20-xnU" firstAttribute="top" secondItem="eKz-TQ-xer" secondAttribute="bottom" constant="24" id="Cqx-VI-lVl"/>
+                            <constraint firstItem="eKz-TQ-xer" firstAttribute="leading" secondItem="25B-BO-WEN" secondAttribute="leading" constant="55" id="LB4-3o-JHI"/>
+                            <constraint firstItem="ZWx-Ix-h98" firstAttribute="leading" secondItem="IbV-pp-SWj" secondAttribute="trailing" constant="69" id="N6p-x9-sPB"/>
+                            <constraint firstItem="rnd-up-uV8" firstAttribute="leading" secondItem="25B-BO-WEN" secondAttribute="leading" constant="144" id="VoF-U7-cWj"/>
+                            <constraint firstItem="25B-BO-WEN" firstAttribute="trailing" secondItem="rnd-up-uV8" secondAttribute="trailing" constant="144" id="ZTa-Kz-trd"/>
+                            <constraint firstItem="25B-BO-WEN" firstAttribute="trailing" secondItem="ZWx-Ix-h98" secondAttribute="trailing" constant="54" id="dcF-UJ-pFS"/>
+                            <constraint firstItem="rnd-up-uV8" firstAttribute="top" secondItem="25B-BO-WEN" secondAttribute="top" constant="19" id="hDF-D2-CVx"/>
+                            <constraint firstItem="eKz-TQ-xer" firstAttribute="top" secondItem="rnd-up-uV8" secondAttribute="bottom" constant="23" id="jD1-PP-H4i"/>
+                            <constraint firstItem="rnd-up-uV8" firstAttribute="centerX" secondItem="eKz-TQ-xer" secondAttribute="centerX" id="kkI-kE-eVL"/>
+                            <constraint firstItem="eKz-TQ-xer" firstAttribute="centerX" secondItem="IbV-pp-SWj" secondAttribute="centerX" id="uOi-Tc-FAn"/>
+                            <constraint firstItem="rnd-up-uV8" firstAttribute="centerX" secondItem="XSU-lH-woV" secondAttribute="centerX" id="wqY-c8-M70"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="25B-BO-WEN"/>
                     </view>
-                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="mfE-nb-KLt">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="6Be-lK-rtf"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="mfE-nb-KLt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40g-5a-TJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
