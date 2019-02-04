@@ -31,7 +31,7 @@ class EventsViewController: UIViewController {
         
         let okAction = UIAlertAction(title: "OK", style: .default, handler: {_ -> Void in
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let timerVC = storyBoard.instantiateViewController(withIdentifier: "Timer")
+            let timerVC = storyBoard.instantiateViewController(withIdentifier: "TimerNav")
             self.present(timerVC, animated: true, completion: nil)
         })
         

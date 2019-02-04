@@ -17,7 +17,7 @@
 		B1708BFF21FFC1AF00A3BF81 /* MyTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1708BFE21FFC1AF00A3BF81 /* MyTimerUITests.swift */; };
 		B1708C0D21FFC21C00A3BF81 /* MainNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1708C0C21FFC21C00A3BF81 /* MainNavController.swift */; };
 		B1708C0F21FFC37700A3BF81 /* BeginningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1708C0E21FFC37700A3BF81 /* BeginningViewController.swift */; };
-		B1708C162200EE3300A3BF81 /* TimerSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1708C152200EE3300A3BF81 /* TimerSceneViewController.swift */; };
+		B1A218E72208114600035971 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A218E62208114600035971 /* TimerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,7 @@
 		B1708C0021FFC1AF00A3BF81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1708C0C21FFC21C00A3BF81 /* MainNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
 		B1708C0E21FFC37700A3BF81 /* BeginningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginningViewController.swift; sourceTree = "<group>"; };
-		B1708C152200EE3300A3BF81 /* TimerSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSceneViewController.swift; sourceTree = "<group>"; };
+		B1A218E62208114600035971 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +105,7 @@
 		B1708BDA21FFC1AE00A3BF81 /* MyTimer */ = {
 			isa = PBXGroup;
 			children = (
+				B1A218E62208114600035971 /* TimerViewController.swift */,
 				B1708BDB21FFC1AE00A3BF81 /* AppDelegate.swift */,
 				B1708BDF21FFC1AE00A3BF81 /* Main.storyboard */,
 				B1708BE521FFC1AF00A3BF81 /* Assets.xcassets */,
@@ -114,7 +115,6 @@
 				B1708BDD21FFC1AE00A3BF81 /* EventsViewController.swift */,
 				B1708C0C21FFC21C00A3BF81 /* MainNavController.swift */,
 				B1708C0E21FFC37700A3BF81 /* BeginningViewController.swift */,
-				B1708C152200EE3300A3BF81 /* TimerSceneViewController.swift */,
 			);
 			path = MyTimer;
 			sourceTree = "<group>";
@@ -269,10 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1708C0D21FFC21C00A3BF81 /* MainNavController.swift in Sources */,
-				B1708C162200EE3300A3BF81 /* TimerSceneViewController.swift in Sources */,
 				B1708BDE21FFC1AE00A3BF81 /* EventsViewController.swift in Sources */,
 				B1708BE421FFC1AE00A3BF81 /* MyTimer.xcdatamodeld in Sources */,
 				B1708BDC21FFC1AE00A3BF81 /* AppDelegate.swift in Sources */,
+				B1A218E72208114600035971 /* TimerViewController.swift in Sources */,
 				B1708C0F21FFC37700A3BF81 /* BeginningViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
