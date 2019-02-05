@@ -10,7 +10,8 @@ import UIKit
 
 class TimerViewController: UIViewController {
 
-
+    @IBOutlet weak var eventName: UILabel!
+    
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var minuteLabel: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
@@ -18,6 +19,7 @@ class TimerViewController: UIViewController {
     
     var timeStartsAt = Date.init()
     var scheduleTimer = Timer()
+    var nextVCData: String! = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,8 @@ class TimerViewController: UIViewController {
         minuteLabel.text = "00"
         secondLabel.text = "00"
         milisecLabel.text = "00"
+//        print(nextVCData as Any)
+        eventName.text = nextVCData
         
         // Do any additional setup after loading the view.
     }

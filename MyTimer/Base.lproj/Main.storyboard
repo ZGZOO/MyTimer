@@ -171,6 +171,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="mfE-nb-KLt"/>
                     <connections>
+                        <outlet property="eventName" destination="rnd-up-uV8" id="dt5-8M-Ma4"/>
                         <outlet property="hourLabel" destination="CF6-pX-iSJ" id="47D-pt-KWr"/>
                         <outlet property="milisecLabel" destination="Eat-p9-czo" id="Rj7-aa-N3N"/>
                         <outlet property="minuteLabel" destination="fnm-kD-EPk" id="Xnr-wF-h3m"/>
