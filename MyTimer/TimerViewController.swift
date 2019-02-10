@@ -10,8 +10,7 @@ import UIKit
 
 class TimerViewController: UIViewController {
 
-    @IBOutlet weak var eventName: UILabel!
-    
+    @IBOutlet weak var eventLabel: UILabel!
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var minuteLabel: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
@@ -19,7 +18,9 @@ class TimerViewController: UIViewController {
     
     var timeStartsAt = Date.init()
     var scheduleTimer = Timer()
-    var nextVCData: String! = ""
+    
+    //look here!
+    var eventTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +28,9 @@ class TimerViewController: UIViewController {
         minuteLabel.text = "00"
         secondLabel.text = "00"
         milisecLabel.text = "00"
-//        print(nextVCData as Any)
-        eventName.text = nextVCData
+        print(eventTitle ?? "no value still" + " + before assign in Timer")
+        eventLabel.text = eventTitle
+        print(eventTitle ?? "no value still" + " + after assign in Timer")
         
         // Do any additional setup after loading the view.
     }
@@ -63,6 +65,10 @@ class TimerViewController: UIViewController {
         
     }
     
+    
+    @IBAction func stopPressed(_ sender: Any) {
+        scheduleTimer.invalidate()
+    }
     /*
     // MARK: - Navigation
 

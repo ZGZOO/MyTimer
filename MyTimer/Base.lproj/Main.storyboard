@@ -47,10 +47,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="9XX-Ou-dox" kind="show" identifier="passEventName" id="Jqi-nR-VnW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="994" y="791"/>
+            <point key="canvasLocation" x="992.79999999999995" y="790.25487256371821"/>
         </scene>
         <!--Timer View Controller-->
         <scene sceneID="8gM-5m-mQO">
@@ -76,6 +79,9 @@
                                 <state key="normal" title="Stop">
                                     <color key="titleColor" red="0.9103967547416687" green="0.3195361662747806" blue="0.35785335639873339" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="stopPressed:" destination="9XX-Ou-dox" eventType="touchUpInside" id="1C0-4d-8fi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbV-pp-SWj">
                                 <rect key="frame" x="156" y="202" width="63" height="33"/>
@@ -171,7 +177,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="mfE-nb-KLt"/>
                     <connections>
-                        <outlet property="eventName" destination="rnd-up-uV8" id="dt5-8M-Ma4"/>
+                        <outlet property="eventLabel" destination="rnd-up-uV8" id="dt5-8M-Ma4"/>
                         <outlet property="hourLabel" destination="CF6-pX-iSJ" id="47D-pt-KWr"/>
                         <outlet property="milisecLabel" destination="Eat-p9-czo" id="Rj7-aa-N3N"/>
                         <outlet property="minuteLabel" destination="fnm-kD-EPk" id="Xnr-wF-h3m"/>
@@ -258,7 +264,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uxD-wh-kUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1757.5999999999999" y="607.64617691154433"/>
+            <point key="canvasLocation" x="1702" y="111"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Jqi-nR-VnW"/>
+    </inferredMetricsTieBreakers>
 </document>
