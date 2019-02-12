@@ -15,11 +15,13 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var minuteLabel: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var milisecLabel: UILabel!
+    @IBOutlet weak var startButton: UIButton!
+    
+    @IBOutlet weak var durationsTable: UITableView!
     
     var timeStartsAt = Date.init()
     var scheduleTimer = Timer()
     
-    //look here!
     var eventTitle: String?
     
     override func viewDidLoad() {
@@ -35,11 +37,20 @@ class TimerViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    var startNotRuns = false
+    
     @IBAction func startPressed(_ sender: UIButton) {
-        timeStartsAt = Date.init()
-        timeCounter()
-        scheduleTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.timeCounter), userInfo: nil, repeats: true)
-        
+        if !startNotRuns {
+            startButton.setTitle("Pause", for: .normal)
+            timeStartsAt = Date.init()
+            timeCounter()
+            scheduleTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.timeCounter), userInfo: nil, repeats: true)
+            startNotRuns = true
+        }else{
+            scheduleTimer.invalidate()
+            startButton.setTitle("Start", for: .normal)
+            startNotRuns = false
+        }
     }
     
     @objc func timeCounter() {
