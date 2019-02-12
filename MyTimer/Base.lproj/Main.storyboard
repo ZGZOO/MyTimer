@@ -24,11 +24,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Esb-aG-za7">
+                                <rect key="frame" x="16" y="178" width="343" height="469"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventsTableViewCell" id="LcK-ty-x0V">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LcK-ty-x0V" id="ARg-wY-oh4">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Wwe-JA-olk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BHJ-af-iH7"/>
                             <constraint firstItem="Wwe-JA-olk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="18" id="Cjn-Sl-PwS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Esb-aG-za7" secondAttribute="bottom" constant="20" id="Eax-Xb-USG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Esb-aG-za7" secondAttribute="trailing" constant="16" id="ULU-Nc-YnN"/>
+                            <constraint firstItem="Esb-aG-za7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="sff-A1-gCa"/>
+                            <constraint firstItem="Esb-aG-za7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="114" id="wPk-dh-imw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -48,6 +66,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="eventsTable" destination="Esb-aG-za7" id="rYa-R0-o9u"/>
                         <segue destination="9XX-Ou-dox" kind="show" identifier="passEventName" id="Jqi-nR-VnW"/>
                     </connections>
                 </viewController>
@@ -186,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40g-5a-TJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2612" y="607.64617691154433"/>
+            <point key="canvasLocation" x="1894" y="791"/>
         </scene>
         <!--Beginning View Controller-->
         <scene sceneID="v6U-d8-Bg0">
@@ -248,26 +267,5 @@
             </objects>
             <point key="canvasLocation" x="184.80000000000001" y="791.15442278860576"/>
         </scene>
-        <!--Timer Nav-->
-        <scene sceneID="6mY-hV-0pC">
-            <objects>
-                <navigationController storyboardIdentifier="TimerNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u1J-OJ-Pxy" customClass="TimerNav" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vz8-zL-4Oi">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="9XX-Ou-dox" kind="relationship" relationship="rootViewController" id="5uT-56-JCN"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uxD-wh-kUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1702" y="111"/>
-        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Jqi-nR-VnW"/>
-    </inferredMetricsTieBreakers>
 </document>

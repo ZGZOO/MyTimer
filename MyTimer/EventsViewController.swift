@@ -8,11 +8,16 @@
 
 import UIKit
 
-class EventsViewController: UIViewController {
+class EventsViewController: UIViewController, UITableViewDataSource {
+
+    @IBOutlet weak var eventsTable: UITableView!
+    
+    private var eventNames : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        eventNames.removeAll()
+        self.eventsTable.dataSource = self
     }
 
     var eventName : String = ""
@@ -34,8 +39,8 @@ class EventsViewController: UIViewController {
         
         let okAction = UIAlertAction(title: "OK", style: .default, handler: {_ -> Void in
             self.eventName = alertController.textFields![0].text!
+            self.insertEventName()
             self.performSegue(withIdentifier: "passEventName", sender: self)
-            print(self.eventName + " + after prepare func")
         })
         
         //Add action to alertController. Yes
@@ -51,6 +56,39 @@ class EventsViewController: UIViewController {
             let timeVC = segue.destination as! TimerViewController
             timeVC.eventTitle = eventName
         }
+    }
+    
+    func insertEventName(){
+        eventNames.insert(self.eventName,at: eventNames.count)
+        UserDefaults.standard.set(eventNames, forKey: "EventArray")
+        let indexPath = IndexPath(row: 0, section: 0)
+        eventsTable.beginUpdates()
+        eventsTable.insertRows(at: [indexPath], with: .automatic)
+        eventsTable.endUpdates()
+        eventsTable.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let array = UserDefaults.standard.object(forKey: "EventArray") as? [String]{
+            print(array)
+            eventNames = array
+            eventsTable.reloadData()
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.eventNames.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventsTableViewCell")
+        let text = self.eventNames[indexPath.row]
+        cell?.textLabel?.text = text
+        return cell!
     }
     
 }
