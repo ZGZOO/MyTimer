@@ -20,7 +20,10 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var durationsTable: UITableView!
     
     var timeStartsAt = Date.init()
+    var timeEndsAt = Date.init()
     var scheduleTimer = Timer()
+    var duration = 0.0
+    var fixedDuration = 0.0
     
     var eventTitle: String?
     
@@ -48,14 +51,15 @@ class TimerViewController: UIViewController {
             startNotRuns = true
         }else{
             scheduleTimer.invalidate()
+            timeEndsAt = Date.init()
+            fixedDuration += timeEndsAt.timeIntervalSince(timeStartsAt)
             startButton.setTitle("Start", for: .normal)
             startNotRuns = false
         }
     }
     
     @objc func timeCounter() {
-        
-        let duration = Date.init().timeIntervalSince(timeStartsAt)
+        duration = fixedDuration + Date.init().timeIntervalSince(timeStartsAt)
    
         let hour = (Int)(fmod((duration/3600), 60))
         let minute = (Int)(fmod((duration/60), 60))
@@ -79,7 +83,9 @@ class TimerViewController: UIViewController {
     
     @IBAction func stopPressed(_ sender: Any) {
         scheduleTimer.invalidate()
+        startButton.setTitle("Start", for: .normal)
     }
+    
     /*
     // MARK: - Navigation
 
