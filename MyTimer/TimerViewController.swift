@@ -8,8 +8,8 @@
 
 import UIKit
 
-class TimerViewController: UIViewController {
-
+class TimerViewController: UIViewController, UITableViewDataSource {
+    
     @IBOutlet weak var eventLabel: UILabel!
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var minuteLabel: UILabel!
@@ -27,6 +27,9 @@ class TimerViewController: UIViewController {
     
     var eventTitle: String?
     
+    var durationArray : [String] = []
+    var arrayContent : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         hourLabel.text = "00"
@@ -37,6 +40,7 @@ class TimerViewController: UIViewController {
         eventLabel.text = eventTitle
         print(eventTitle ?? "no value still" + " + after assign in Timer")
         
+        self.durationsTable.dataSource = self
         // Do any additional setup after loading the view.
     }
     
@@ -80,10 +84,45 @@ class TimerViewController: UIViewController {
         
     }
     
-    
     @IBAction func stopPressed(_ sender: Any) {
         scheduleTimer.invalidate()
         startButton.setTitle("Start", for: .normal)
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+//        formatter.dateFormat = "MMMM dd, yyyy"
+        arrayContent = formatter.string(from: date) + "\nhello"
+        durationArray.insert(self.arrayContent!,at: durationArray.count)
+        UserDefaults.standard.set(durationArray, forKey: "DurationArray")
+        let indexPath = IndexPath(row: 0, section: 0)
+        durationsTable.beginUpdates()
+        durationsTable.insertRows(at: [indexPath], with: .automatic)
+        durationsTable.endUpdates()
+        durationsTable.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let array = UserDefaults.standard.object(forKey: "DurationArray") as? [String]{
+            print(array)
+            durationArray = array
+            durationsTable.reloadData()
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.durationArray.count
+    }
+    
+    //still can't type in mind
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "durationCell")
+        let text = self.durationArray[indexPath.row]
+        cell?.textLabel?.text = text
+        return cell!
     }
     
     /*

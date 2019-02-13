@@ -58,6 +58,7 @@ class EventsViewController: UIViewController, UITableViewDataSource {
         }
     }
     
+    //I can't type in mind
     func insertEventName(){
         eventNames.insert(self.eventName,at: eventNames.count)
         UserDefaults.standard.set(eventNames, forKey: "EventArray")
@@ -68,6 +69,7 @@ class EventsViewController: UIViewController, UITableViewDataSource {
         eventsTable.reloadData()
     }
     
+    //I forgot that this part is necessary if want to keep the screen
     override func viewDidAppear(_ animated: Bool) {
         if let array = UserDefaults.standard.object(forKey: "EventArray") as? [String]{
             print(array)
