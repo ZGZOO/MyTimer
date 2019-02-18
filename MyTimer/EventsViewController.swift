@@ -16,7 +16,9 @@ class EventsViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //not necessary to keep them
 //        eventNames.removeAll()
+//        eventsTable.reloadData()
         self.eventsTable.dataSource = self
     }
 
@@ -67,16 +69,19 @@ class EventsViewController: UIViewController, UITableViewDataSource {
         eventsTable.insertRows(at: [indexPath], with: .automatic)
         eventsTable.endUpdates()
         eventsTable.reloadData()
+        print(eventNames)
     }
     
     //I forgot that this part is necessary if want to keep the screen
-    override func viewDidAppear(_ animated: Bool) {
-        if let array = UserDefaults.standard.object(forKey: "EventArray") as? [String]{
-            print(array)
-            eventNames = array
-            eventsTable.reloadData()
-        }
-    }
+    //commented it out for now. Need to have it later!!
+//    override func viewDidAppear(_ animated: Bool) {
+//    
+//        if let array = UserDefaults.standard.object(forKey: "EventArray") as? [String]{
+//            print(array)
+//            eventNames = array
+//            eventsTable.reloadData()
+//        }
+//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimerViewController: UIViewController, UITableViewDataSource {
+class TimerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var eventLabel: UILabel!
     @IBOutlet weak var hourLabel: UILabel!
@@ -36,9 +36,7 @@ class TimerViewController: UIViewController, UITableViewDataSource {
         minuteLabel.text = "00"
         secondLabel.text = "00"
         milisecLabel.text = "00"
-        print(eventTitle ?? "no value still" + " + before assign in Timer")
         eventLabel.text = eventTitle
-        print(eventTitle ?? "no value still" + " + after assign in Timer")
         
         self.durationsTable.dataSource = self
         // Do any additional setup after loading the view.
@@ -62,36 +60,77 @@ class TimerViewController: UIViewController, UITableViewDataSource {
         }
     }
     
+    var hr : String!
+    var min : String!
+    var sec : String!
+    var ms : String!
+    var hrShow : String!
+    var minShow : String!
+    var secShow : String!
+    
     @objc func timeCounter() {
         duration = fixedDuration + Date.init().timeIntervalSince(timeStartsAt)
    
         let hour = (Int)(fmod((duration/3600), 60))
         let minute = (Int)(fmod((duration/60), 60))
-        
         let second = (Int)(fmod(duration, 60))
-        
         let msec = (Int)((duration - floor(duration))*100)
         
-        let hr = String(format:"%02d", hour)
-        let min = String(format:"%02d", minute)
-        let sec = String(format:"%02d", second)
-        let ms = String(format:"%02d", msec)
+        if hour < 10 {
+            hr = "0" + String(format:"%01d", hour)
+            hrShow = String(format:"%01d", hour)
+        }else{
+            hr = String(format:"%02d", hour)
+            hrShow = String(format:"%01d", hour)
+        }
+        
+        if minute < 10 {
+            min = "0" + String(format:"%01d", minute)
+            minShow = String(format:"%01d", minute)
+        }else{
+            min = String(format:"%02d", minute)
+            minShow = String(format:"%01d", minute)
+        }
+        
+        if second < 10 {
+            sec = "0" + String(format:"%01d", second)
+            secShow = String(format:"%01d", second)
+        }else{
+            sec = String(format:"%02d", second)
+            secShow = String(format:"%01d", second)
+        }
+        
+        ms = String(format:"%02d", msec)
         
         hourLabel.text = hr
         minuteLabel.text = min
         secondLabel.text = sec
         milisecLabel.text = ms
-        
     }
+    
+    var todayDate : String!
     
     @IBAction func stopPressed(_ sender: Any) {
         scheduleTimer.invalidate()
         startButton.setTitle("Start", for: .normal)
+        startNotRuns = false
+    
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
 //        formatter.dateFormat = "MMMM dd, yyyy"
-        arrayContent = formatter.string(from: date) + "\nhello"
+        todayDate = formatter.string(from: date)
+        
+        if hr != "00" {
+            arrayContent = todayDate + ": " + hrShow + " hrs " + minShow + " mins " + secShow + " secs." + ms
+        }else if min != "00" {
+            arrayContent = todayDate + ": " + minShow + " mins " + secShow + " secs." + ms
+        }else if sec != "00" {
+            arrayContent = todayDate + ": " + secShow + "." + ms + " secs"
+        }else {
+            arrayContent = todayDate + ": " + "0." + ms + " secs"
+        }
+
         durationArray.insert(self.arrayContent!,at: durationArray.count)
         UserDefaults.standard.set(durationArray, forKey: "DurationArray")
         let indexPath = IndexPath(row: 0, section: 0)
@@ -99,23 +138,40 @@ class TimerViewController: UIViewController, UITableViewDataSource {
         durationsTable.insertRows(at: [indexPath], with: .automatic)
         durationsTable.endUpdates()
         durationsTable.reloadData()
+        
+        duration = 0.0
+        fixedDuration = 0.0
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if let array = UserDefaults.standard.object(forKey: "DurationArray") as? [String]{
-            print(array)
-            durationArray = array
-            durationsTable.reloadData()
-        }
-    }
+    //coommented it for now. Need it if want to keep the history on the screen
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        durationArray.removeAll()
+//        durationsTable.reloadData()
+//        if let array = UserDefaults.standard.object(forKey: "DurationArray") as? [String]{
+//            print(array)
+//            durationArray = array
+//            durationsTable.reloadData()
+//        }
+//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Your each duration"
+    }
+    
+    //no reaction?? //commented it out for now
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 1200
+//    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.durationArray.count
     }
+    
     
     //still can't type in mind
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -124,6 +180,8 @@ class TimerViewController: UIViewController, UITableViewDataSource {
         cell?.textLabel?.text = text
         return cell!
     }
+    
+    
     
     /*
     // MARK: - Navigation
