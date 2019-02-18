@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventsViewController: UIViewController, UITableViewDataSource {
+class EventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var eventsTable: UITableView!
     
@@ -74,14 +74,14 @@ class EventsViewController: UIViewController, UITableViewDataSource {
     
     //I forgot that this part is necessary if want to keep the screen
     //commented it out for now. Need to have it later!!
-//    override func viewDidAppear(_ animated: Bool) {
-//    
-//        if let array = UserDefaults.standard.object(forKey: "EventArray") as? [String]{
-//            print(array)
-//            eventNames = array
-//            eventsTable.reloadData()
-//        }
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+
+        if let array = UserDefaults.standard.object(forKey: "EventArray") as? [String]{
+            print(array)
+            eventNames = array
+            eventsTable.reloadData()
+        }
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -97,6 +97,20 @@ class EventsViewController: UIViewController, UITableViewDataSource {
         cell?.textLabel?.text = text
         return cell!
     }
+    
+    //delete an element in the table
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else {return}
+            eventNames.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "TimerViewController")
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    
     
 }
 

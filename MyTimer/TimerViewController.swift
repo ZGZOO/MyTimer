@@ -38,6 +38,9 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
         milisecLabel.text = "00"
         eventLabel.text = eventTitle
         
+//        durationArray.removeAll()
+//        durationsTable.reloadData()
+
         self.durationsTable.dataSource = self
         // Do any additional setup after loading the view.
     }
@@ -145,15 +148,15 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     //coommented it for now. Need it if want to keep the history on the screen
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        durationArray.removeAll()
-//        durationsTable.reloadData()
-//        if let array = UserDefaults.standard.object(forKey: "DurationArray") as? [String]{
-//            print(array)
-//            durationArray = array
-//            durationsTable.reloadData()
-//        }
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        durationArray.removeAll()
+        durationsTable.reloadData()
+        if let array = UserDefaults.standard.object(forKey: "DurationArray") as? [String]{
+            print(array)
+            durationArray = array
+            durationsTable.reloadData()
+        }
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -180,6 +183,8 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell?.textLabel?.text = text
         return cell!
     }
+    
+    
     
     
     
